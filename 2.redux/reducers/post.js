@@ -1,4 +1,4 @@
-const initialState = [];
+const initialState = []; //posts
 
 const postReducer = (prevState = initialState, action) => { // 새로운 state 만들어주기
   switch (action.type) {
@@ -9,4 +9,4 @@ const postReducer = (prevState = initialState, action) => { // 새로운 state �
   }
 };
 
-module.exports = postReducer;
+module.exports = postReducer; //리듀서를 따로빼서 모듈로 만들어줌

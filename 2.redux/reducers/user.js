@@ -1,4 +1,4 @@
-const initialState = {
+const initialState = { //user
   isLoggingIn: false,
   data: null,
 };

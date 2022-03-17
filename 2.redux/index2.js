@@ -1,4 +1,4 @@
-const { createStore, compose, applyMiddleware } = require('redux');
+const { createStore, applyMiddleware } = require('redux');
 const reducer = require('./reducers');
 const { addPost } = require('./actions/post');
 const { logIn, logOut } = require('./actions/user');
@@ -11,19 +11,31 @@ const initialState = {
   posts: [],
 };
 
-const firstMiddleware = (store) => (next) => (action) => {
-  console.log('로깅', action);
-  next(action);
+//dispatch 와 reducer사이에 동작하는게 미들웨어다.
+//매개변수3개가들어가는 함수, 밑에처럼 사이사이에 함수를 실행할 필요가 없는경우
+const firstMiddleware = (store) => (dispatch) => (action) => { //미들웨어 예시1
+  console.log('first-middleware-로깅 시작', action);
+  dispatch(action); //dispatch + console기능이 추가된 미들웨어임
+  console.log('first-middleware-로깅 끝');
 };
+// const firstMiddleware(store){
+//   store()
+//   return function(next){
+//     next()
+//     return function(action){
+//       action()
+//     }
+//   }
+// }
 
-const thunkMiddleware = (store) => (next) => (action) => {
+const thunkMiddleware = (store) => (dispatch) => (action) => {//미들웨어 예시2
   if (typeof action === 'function') { // 비동기
     return action(store.dispatch, store.getState);
   }
-  return next(action); // 동기
+  return dispatch(action); // 동기
 };
 
-const enhancer = applyMiddleware(
+const enhancer = applyMiddleware(//미들웨어들을 적용해주는 함수,devtool같은것도 연결해줌
   firstMiddleware,
   thunkMiddleware,
 );
@@ -34,26 +46,26 @@ console.log('1st', store.getState());
 
 // --------------------------------------
 
-
-store.dispatch(logIn({
+store.dispatch(logIn({ //로그인요청
   id: 1,
-  name: 'zerocho',
+  name: 'seok',
   admin: true,
 }));
 console.log('2nd', store.getState());
-//
-// store.dispatch(addPost({
-//   userId: 1,
-//   id: 1,
-//   content: '안녕하세요. 리덕스',
-// }));
-// console.log('3rd', store.getState());
-// store.dispatch(addPost({
-//   userId: 1,
-//   id: 2,
-//   content: '두번째 리덕스',
-// }));
-// console.log('4th', store.getState());
-//
-// store.dispatch(logOut());
-// console.log('5th', store.getState());
+
+store.dispatch(addPost({ //게시글추가
+  userId: 1,
+  id: 1,
+  content: '안녕하세요. 리덕스',
+}));
+console.log('3rd', store.getState());
+
+store.dispatch(addPost({//게시글추가
+  userId: 1,
+  id: 2,
+  content: '두번째 리덕스',
+}));
+console.log('4th', store.getState());
+
+store.dispatch(logOut());//로그아웃요청
+console.log('5th', store.getState());

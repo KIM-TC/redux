@@ -1,4 +1,5 @@
-const logIn = (data) => { // async action creator
+//액션생성함수
+const logIn = (data) => { 
   return (dispatch, getState) => { // async action
     dispatch(logInRequest(data));
     try {
