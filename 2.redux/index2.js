@@ -29,10 +29,10 @@ const firstMiddleware = (store) => (dispatch) => (action) => { //미들웨어 �
 // }
 
 const thunkMiddleware = (store) => (dispatch) => (action) => {//미들웨어 예시2
-  if (typeof action === 'function') { // 비동기
-    return action(store.dispatch, store.getState);
+  if (typeof action === 'function') { //함수면 -> 비동기로 처리
+    return action(store.dispatch, store.getState); //함수실행
   }
-  return dispatch(action); // 동기
+  return dispatch(action); //객체면->동기처리
 };
 
 const enhancer = applyMiddleware(//미들웨어들을 적용해주는 함수,devtool같은것도 연결해줌
@@ -46,26 +46,26 @@ console.log('1st', store.getState());
 
 // --------------------------------------
 
-store.dispatch(logIn({ //로그인요청
+store.dispatch(logIn({ //로그인요청(비동기처리->thunk작동)
   id: 1,
   name: 'seok',
   admin: true,
 }));
-console.log('2nd', store.getState());
+// console.log('2nd', store.getState());
 
-store.dispatch(addPost({ //게시글추가
-  userId: 1,
-  id: 1,
-  content: '안녕하세요. 리덕스',
-}));
-console.log('3rd', store.getState());
+// store.dispatch(addPost({ //게시글추가
+//   userId: 1,
+//   id: 1,
+//   content: '안녕하세요. 리덕스',
+// }));
+// console.log('3rd', store.getState());
 
-store.dispatch(addPost({//게시글추가
-  userId: 1,
-  id: 2,
-  content: '두번째 리덕스',
-}));
-console.log('4th', store.getState());
+// store.dispatch(addPost({//게시글추가
+//   userId: 1,
+//   id: 2,
+//   content: '두번째 리덕스',
+// }));
+// console.log('4th', store.getState());
 
-store.dispatch(logOut());//로그아웃요청
-console.log('5th', store.getState());
+// store.dispatch(logOut());//로그아웃요청
+// console.log('5th', store.getState());
