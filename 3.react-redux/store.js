@@ -30,9 +30,9 @@ const enhancer = process.env.NODE_ENV === 'production'
     applyMiddleware(
       firstMiddleware,
       thunkMiddleware,
-    ),
-  )
-  : composeWithDevTools(
+    )
+ )
+  : composeWithDevTools( //개발용일때만 devtool적용 ->배포용적용시 데이터노출
     applyMiddleware(
       firstMiddleware,
       thunkMiddleware,
