@@ -6,10 +6,10 @@ const postReducer = (prevState = initialState, action) => { // 새로운 state �
   return produce(prevState, (draft) => {
     switch (action.type) {
       case 'ADD_POST':
-        draft.push(action.data);
+        draft.push(action.data); //[...prevState, action.data];
         break;
       default:
-        break;
+        break; //prevState;
     }
   });
 };

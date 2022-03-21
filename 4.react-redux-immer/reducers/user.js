@@ -1,4 +1,4 @@
-const { produce } = require('immer');
+const { produce } = require('immer'); //리듀서를 좀더 직관적인 형태로 정리하기위해 immer사용
 
 const initialState = {
   isLoggingIn: false,
@@ -7,9 +7,9 @@ const initialState = {
 
 // nextState = produce(prevState, (draft) => {})
 
-const userReducer = (prevState = initialState, action) => { // 새로운 state 만들어주기
-  return produce(prevState, (draft) => {
-    switch (action.type) {
+const userReducer = (prevState = initialState, action) => { // action을 바탕으로 새로운 state 만들어주기
+  return produce(prevState, (draft) => {  // produce = nextState
+    switch (action.type) { 
       case 'LOG_IN_REQUEST':
         draft.data = null;
         draft.isLoggingIn = true;
