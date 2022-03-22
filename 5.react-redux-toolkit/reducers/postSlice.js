@@ -22,3 +22,5 @@ const postSlice = createSlice({
 });
 
 module.exports = postSlice;
+//reducers:동기적 action, 내부적action
+//extraReduceres:비동기적 action, 외부적action

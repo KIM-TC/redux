@@ -17,7 +17,7 @@ const App = () => {
   }, []);
 
   const onLogout = useCallback(() => {
-    dispatch(userSlice.actions.logOut());
+    dispatch(userSlice.actions.logOut()); //slice안에 있는 action의 logout(툴킷이 알아서 action을 만들어줌)
   }, []);
 
   return (

@@ -5,7 +5,7 @@ const logIn = (data) => { // async action creator
       setTimeout(() => {
         dispatch(logInSuccess({
           userId: 1,
-          nickname: 'zerocho'
+          nickname: 'seok'
         }));
       }, 2000);
       // axios.post().then().catch()으로 나중에 대체

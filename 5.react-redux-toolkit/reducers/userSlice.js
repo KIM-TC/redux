@@ -15,7 +15,7 @@ const userSlice = createSlice({
     }
   },
   extraReducers: (builder) => builder
-    .addCase(logIn.pending, (state, action) => {
+    .addCase(logIn.pending, (state, action) => { //thunk: pending,fulfilled,rejected로 나뉨
       state.data = null;
       state.isLoggingIn = true;
     })
@@ -29,3 +29,6 @@ const userSlice = createSlice({
 })
 
 module.exports = userSlice;
+//reducers:동기적 action, 내부적action
+//extraReduceres:비동기적 action, 외부적action
+//비동기적은 네트워크 요청이 많은데 or setTimeOut  -> thunk사용
