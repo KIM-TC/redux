@@ -7,8 +7,7 @@ const delay = (time, value) => new Promise((resolve, reject) => {
 });
 
 exports.logIn = createAsyncThunk('user/logIn', async (data, thunkAPI) => { //pending,fulfilled,rejected로 나뉨
-  // throw new Error('비밀번호가 틀렸습니다.');
-  return await delay(500,{
+  return await delay(500,{ //응답 => fulfilled로 전달
     userId: 1,
     nickname: 'seok'
   });
