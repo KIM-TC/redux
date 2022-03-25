@@ -26,6 +26,14 @@ const userSlice = createSlice({
     .addCase(logIn.rejected, (state, action) => { //비동기 호출실패
       state.error = action.payload;
     })
+    .addMatcher((action)=>{ //여러 action간에 공통적인거 matcher사용해서 처리
+      return action.type.includes('./pending') //이부분이 true이면
+    },(state, action) => {
+      state.isLoading=true
+    })
+    .addDefaultCase((state, action) => { //defualt일경우작성
+
+    })
 })
 
 module.exports = userSlice;

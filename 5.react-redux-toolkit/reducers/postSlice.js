@@ -18,7 +18,7 @@ const postSlice = createSlice({
     })
     .addCase(addPost.rejected, (state, action) => {
 
-    }),
+    })
 });
 
 module.exports = postSlice;
