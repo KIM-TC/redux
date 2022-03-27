@@ -6,8 +6,9 @@ const { addPost } = require("./actions/post");
 const userSlice = require("./reducers/userSlice");
 
 const App = () => {
-  const user = useSelector((state) => state.user);
-  const { list } = useSelector((state) => state.post);
+  const user = useSelector((state) => state.user); //지양하는방법 -> 불필요한 랜더링이 너무 일어남 
+  //const { list } = useSelector((state) => state.post); //가져오는 데이터가 많으면 이런식으로 객체로 선언 -> 자기판단대로
+  const isLogginIn = useSelector((state) => state.user.isLogginIn);//지향하는방법
   const dispatch = useDispatch();
 
   const onClick = useCallback(() => {
@@ -29,7 +30,7 @@ const App = () => {
 
   return (
     <div>
-      {user.isLoggingIn ? (
+      {isLogginIn ? (
         <div>로그인 중</div>
       ) : user.data ? (
         <div>{user.data.nickname}</div>
