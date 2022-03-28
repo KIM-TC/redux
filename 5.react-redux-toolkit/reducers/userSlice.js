@@ -4,6 +4,7 @@ const { logIn } = require('../actions/user');
 const initialState = {
   isLoggingIn: false,
   data: null,
+  prices:[1,2,3,4,5,6,7]
 };
 
 const userSlice = createSlice({
