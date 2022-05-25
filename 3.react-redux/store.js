@@ -13,16 +13,16 @@ const initialState = {
   posts: [],
 };
 
-const firstMiddleware = (store) => (next) => (action) => {
+const firstMiddleware = (store) => (dispatch) => (action) => {
   console.log('로깅', action);
-  next(action);
+  dispatch(action);
 };
 
-const thunkMiddleware = (store) => (next) => (action) => {
-  if (typeof action === 'function') { // 비동기
-    return action(store.dispatch, store.getState);
+const thunkMiddleware = (store) => (dispatch) => (action) => {
+  if (typeof action === 'function') { // 비동기 -> 비동기라는것을 구별하기위해 객체 대신 함수를 넣음
+    return action(store.dispatch, store.getState); //함수 실행
   }
-  return next(action); // 동기
+  return dispatch(action); // 동기
 };
 
 const enhancer = process.env.NODE_ENV === 'production'

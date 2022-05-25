@@ -46,11 +46,13 @@ console.log('1st', store.getState());
 
 // --------------------------------------
 
-store.dispatch(logIn({ //로그인요청(비동기처리->thunk작동)
+store.dispatch(logIn({ //로그인요청(함수를 dispatch -> 비동기처리)
   id: 1,
   name: 'seok',
   admin: true,
 }));
+
+
 // console.log('2nd', store.getState());
 
 // store.dispatch(addPost({ //게시글추가
