@@ -8,8 +8,8 @@ const initialState = {
 const postSlice = createSlice({
   name: 'post',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => builder
+  reducers: {}, //동기적 action, 내부적action
+  extraReducers: (builder) => builder   //비동기적 action, 외부적action
     .addCase(addPost.pending, (state, action) => {
 
     })
@@ -22,5 +22,22 @@ const postSlice = createSlice({
 });
 
 module.exports = postSlice;
-//reducers:동기적 action, 내부적action
-//extraReduceres:비동기적 action, 외부적action
+
+//기존 post reducers
+// const { produce } = require('immer');
+
+// const initialState = [];
+
+// const postReducer = (prevState = initialState, action) => { // 새로운 state 만들어주기
+//   return produce(prevState, (draft) => {
+//     switch (action.type) {
+//       case 'ADD_POST':
+//         draft.push(action.data); //[...prevState, action.data];
+//         break;
+//       default:
+//         break; //prevState;
+//     }
+//   });
+// };
+
+// module.exports = postReducer;
