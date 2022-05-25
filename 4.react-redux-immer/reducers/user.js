@@ -5,8 +5,8 @@ const initialState = {
   data: null,
 };
 
-// nextState = produce(prevState, (draft) => {})
-
+//nextState = produce(prevState, (draft) => {})
+//immer => 불변성 유지해주는 라이브러리
 const userReducer = (prevState = initialState, action) => { // action을 바탕으로 새로운 state 만들어주기
   return produce(prevState, (draft) => {  // produce = nextState
     switch (action.type) { 
@@ -32,3 +32,12 @@ const userReducer = (prevState = initialState, action) => { // action을 바탕�
 };
 
 module.exports = userReducer;
+
+// const userReducer = (prevState = initialState, action) => { // 새로운 state 만들어주기
+//   switch (action.type) {
+//     case 'LOG_IN_REQUEST':
+//       return {
+//         ...prevState,
+//         data: null,
+//         isLoggingIn: true,
+//       };

@@ -9,7 +9,7 @@ const App = () => {
 
   const onClick = useCallback(() => { //사실 여기서 비동기처리를 해도되는데 ,코드가독성과 재상용성 떄문에 action파일에서 정의
     dispatch(
-      logIn({  //비동기action함수 dispatch (비동기action은 devtool에 안걸림),비동기action도 동기action을 시차를두고 눈속임ㄴ
+      logIn({  //비동기action함수 dispatch (비동기action은 devtool에 안걸림) 비동기action === 동기action을 시차를두고 눈속임
         id: "seok",
         password: "비밀번호",
       })
