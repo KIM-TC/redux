@@ -8,10 +8,10 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-6.mobx/
-7.mobx/
-8.mobx-react/
-9.mobx-react/
+06.mobx/
+07.mobx/
+08.mobx-react/
+09.mobx-react/
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
